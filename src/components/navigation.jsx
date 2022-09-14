@@ -17,11 +17,11 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-import {Avatar} from "@mui/material";
+import { Avatar } from "@mui/material";
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import Logo from "../Logo";
 import { useState } from "react";
-
+import { useNavContext } from '../provider/navContext'
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -31,7 +31,7 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const [currentPage, setCurrentPage] = useState('Захиалга')
+  const { currentPage } = useNavContext();
 
   const drawer = (
     <div>
@@ -58,8 +58,8 @@ function ResponsiveDrawer(props) {
           { text: "Меню", path: "/menu", icon: <RestaurantIcon /> },
           { text: "Гарах", path: "/", icon: <LogoutIcon /> },
         ].map((el) => (
-          <Link to={el.path} onClick={() => setCurrentPage(el.text)}>
-            <ListItem key={el.text} disablePadding sx={{ color: "#ffffff",background: currentPage==el.text ? 'linear-gradient(90deg, rgba(102,182,15,0.5303308823529411) 7%, rgba(102,182,15,0) 100%)':'none' }}>
+          <Link to={el.path}>
+            <ListItem key={el.text} disablePadding sx={{ color: "#ffffff", background: currentPage == el.text ? 'linear-gradient(90deg, rgba(102,182,15,0.5303308823529411) 7%, rgba(102,182,15,0) 100%)' : 'none' }}>
               <ListItemButton>
                 <ListItemIcon sx={{ color: "#ffffff" }}>{el.icon}</ListItemIcon>
                 <ListItemText primary={el.text} />
@@ -82,14 +82,14 @@ function ResponsiveDrawer(props) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          right:0,
-          backgroundColor:'white',
-          color:'black',
-          height:'100px',
+          right: 0,
+          backgroundColor: 'white',
+          color: 'black',
+          height: '100px',
         }}
         elevation={0}
       >
-        <Toolbar sx={{display:{sm:"flex"}, alignItems:{sm:'center'},height:'100%'}}>
+        <Toolbar sx={{ display: { sm: "flex" }, alignItems: { sm: 'center' }, height: '100%' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -97,18 +97,18 @@ function ResponsiveDrawer(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon sx={{color:'#252733'}} />
+            <MenuIcon sx={{ color: '#252733' }} />
           </IconButton>
 
-          <Typography noWrap component="div" sx={{fontSize:'32px',fontWeight:'700' ,lineHeight:'40px',color:'#252733'}}>
+          <Typography noWrap component="div" sx={{ fontSize: '32px', fontWeight: '700', lineHeight: '40px', color: '#252733' }}>
             {currentPage}
           </Typography>
 
-          <Box sx={{position:'absolute', right:30+"px", display:"flex", alignItems:'center',gap:10+'px'}}>
-          <Typography>
-            Name
-          </Typography>
-          <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+          <Box sx={{ position: 'absolute', right: 30 + "px", display: "flex", alignItems: 'center', gap: 10 + 'px' }}>
+            <Typography>
+              Name
+            </Typography>
+            <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
           </Box>
         </Toolbar>
       </AppBar>
@@ -118,14 +118,14 @@ function ResponsiveDrawer(props) {
 
 
 
-{/*---------------------navigation -------------------------*/}
+      {/*---------------------navigation -------------------------*/}
 
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-{/*---------------------mobile drawer -------------------------*/}
+        {/*---------------------mobile drawer -------------------------*/}
 
         <Drawer
           container={container}
@@ -145,7 +145,7 @@ function ResponsiveDrawer(props) {
         >
           {drawer}
         </Drawer>
-{/*---------------------desktop drawer -------------------------*/}
+        {/*---------------------desktop drawer -------------------------*/}
         <Drawer
           variant="permanent"
           sx={{
@@ -153,7 +153,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              border:'none',
+              border: 'none',
             },
           }}
           open

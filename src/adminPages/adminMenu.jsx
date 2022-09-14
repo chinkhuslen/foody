@@ -6,11 +6,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import {Button} from '@mui/material'
+import { Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
-
+import { useNavContext } from '../provider/navContext'
 const Search = styled('div')(({ theme }) => ({
-  border:'1px solid #DFE0EB',
+  border: '1px solid #DFE0EB',
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   marginLeft: 0,
@@ -44,44 +44,52 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+const addMeal = () => {
+  const root = document.getElementById('root');
+  const newDiv = document.createElement('div');
+  newDiv.innerText = 'Hello';
+  root.appendChild(newDiv);
 
-const MenuPage = () =>{
-    return(
-        <Box>
-            <Box sx={{ flexGrow: 1 }}>
-      <AppBar 
-      position="static"
-      elevation={0}
-      sx={{
-        backgroundColor:'white',
-        color:'black',
-        border:'1px solid #DFE0EB'
-      }}
-      >
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' },color:'#252733' }}
-          >
-            Хоолны сан : {'0'}
-          </Typography>
+}
+const MenuPage = () => {
+  const { setCurrentPage, currentPage } = useNavContext();
+  setCurrentPage('Меню');
+  return (
+    <Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar
+          position="static"
+          elevation={0}
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            border: '1px solid #DFE0EB'
+          }}
+        >
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#252733' }}
+            >
+              Хоолны сан : {'0'}
+            </Typography>
 
-          <Search >
-            <SearchIconWrapper>
-              <SearchIcon sx={{color:'#DFE0EB'}}/>
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Хайлт... "
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Button variant="outlined" sx={{color:'#252733', border:"1px solid #DFE0EB",ml:'17px',fontSize:{xs:'9px',sm:'16px'}}} startIcon={<AddIcon sx={{color:'green'}}/>}>Хоол нэмэх</Button>
-        </Toolbar>
-      </AppBar>
+            <Search >
+              <SearchIconWrapper>
+                <SearchIcon sx={{ color: '#DFE0EB' }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Хайлт... "
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+            <Button onClick={addMeal} variant="outlined" sx={{ color: '#252733', border: "1px solid #DFE0EB", ml: '17px', fontSize: { xs: '9px', sm: '16px' } }} startIcon={<AddIcon sx={{ color: 'green' }} />}>Хоол нэмэх</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </Box>
-        </Box>
-    )
+  )
 }
 export default MenuPage

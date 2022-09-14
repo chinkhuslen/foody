@@ -12,7 +12,6 @@ import { useButtonContext } from "./provider/buttonContext";
 const App = () => {
   const { currentPage } = useNavContext();
   const { isAddMealClicked } = useButtonContext();
-  console.log(currentPage);
   return (
     <Router>
       <div>

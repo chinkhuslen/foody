@@ -7,15 +7,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { useState } from 'react';
-
+import {useButtonContext} from '../provider/buttonContext'
 export const AddMealCart = () => {
     const [age, setAge] = useState('');
+    const { setIsAddMealClicked,isAddMealClicked } = useButtonContext();
+    const handleChange = (event) => {
+      setAge(event.target.value);
+    };
+
     return (
         <div id="addMeal">
 
-            <Card sx={{ width: { xs: 350, sm: 550, md: 750 }, height: "80vh" }}>
+            <Card sx={{ width: { xs: 350, sm: 550, md: 750 }, height: "80vh",overflow:'scroll' }}>
                 <CardContent style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} >
-                    <IconButton>
+                    <IconButton onClick={()=>setIsAddMealClicked(!isAddMealClicked)}>
                         <CloseIcon sx={{ color: '#000000' }} />
                     </IconButton>
                     <Typography sx={{ fontWeight: 700, fontSize: { sm: 24, xs: 18 }, lineHeight: '32px' }}>
@@ -67,34 +72,31 @@ export const AddMealCart = () => {
                             />
                             <TextField
                                 id="outlined-textarea"
-                                label="Хоолны үнэ"
+                                label="Хоолны төрөл"
                                 sx={{ width: '48%' }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">₮</InputAdornment>
-                                    ),
-                                }}
                                 placeholder="Энд бичнэ үү"
                             />
                         </Box>
-                        <FormControl>
+                        {/* <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Age</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
+                                value={age}
                                 label="Age"
+                                onChange={handleChange}
                             >
-                                <MenuItem>Ten</MenuItem>
-                                <MenuItem>Twenty</MenuItem>
-                                <MenuItem>Thirty</MenuItem>
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
                             </Select>
-                        </FormControl>
+                        </FormControl> */}
                     </Box>
                 </CardContent>
                 {/* -------------- */}
                 <CardContent>
                     <Typography variant="h5" component="div">
-                        benevolent
+                        Coming soon...
                     </Typography>
                 </CardContent>
             </Card>

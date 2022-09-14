@@ -2,7 +2,7 @@ import {createTheme, ThemeProvider} from "@mui/material"
 import { useMemo } from "react"
 // styled sudal
 
-const Theme = createTheme({
+const theme = createTheme({
     palette:{
         primary:{
             main:'#00ffff',
@@ -28,5 +28,5 @@ const Theme = createTheme({
 })
 
 export function CustomTheme({ children }){
-    return <ThemeProvider theme={Theme}>{children}</ThemeProvider>
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }

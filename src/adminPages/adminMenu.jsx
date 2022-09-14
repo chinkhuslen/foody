@@ -1,58 +1,21 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import { useNavContext } from '../provider/navContext'
-const Search = styled('div')(({ theme }) => ({
-  border: '1px solid #DFE0EB',
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
+import { useButtonContext } from '../provider/buttonContext'
+import {Search,SearchIconWrapper,StyledInputBase} from '../components/searchBar'
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '20ch'
-    },
-  },
-}));
-const addMeal = () => {
-  const root = document.getElementById('root');
-  const newDiv = document.createElement('div');
-  newDiv.innerText = 'Hello';
-  root.appendChild(newDiv);
-
-}
 const MenuPage = () => {
-  const { setCurrentPage, currentPage } = useNavContext();
+  const { setCurrentPage } = useNavContext();
+  const {setIsAddMealClicked,isAddMealClicked} = useButtonContext();
+  const addMealButton = () => {
+    setIsAddMealClicked(!isAddMealClicked);
+  }
   setCurrentPage('Меню');
   return (
     <Box>
@@ -85,7 +48,7 @@ const MenuPage = () => {
                 inputProps={{ 'aria-label': 'search' }}
               />
             </Search>
-            <Button onClick={addMeal} variant="outlined" sx={{ color: '#252733', border: "1px solid #DFE0EB", ml: '17px', fontSize: { xs: '9px', sm: '16px' } }} startIcon={<AddIcon sx={{ color: 'green' }} />}>Хоол нэмэх</Button>
+            <Button onClick={addMealButton} variant="outlined" sx={{ color: '#252733', border: "1px solid #DFE0EB", ml: '17px', fontSize: { xs: '9px', sm: '16px' } }} startIcon={<AddIcon sx={{ color: 'green' }} />}>Хоол нэмэх</Button>
           </Toolbar>
         </AppBar>
       </Box>

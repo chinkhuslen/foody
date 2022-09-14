@@ -5,10 +5,13 @@ import MenuPage from "./adminPages/adminMenu";
 import SettingsPage from "./adminPages/adminSettings";
 import OrderPage from "./adminPages/OrderPage";
 import ResponsiveDrawer from "./components/navigation";
+import { AddMealCart} from "./components/addMealCart";
 import "./style.css";
 import { useNavContext } from "./provider/navContext";
+import { useButtonContext } from "./provider/buttonContext";
 const App = () => {
-  const { currentPage, setCurrentPage } = useNavContext();
+  const { currentPage } = useNavContext();
+  const { isAddMealClicked } = useButtonContext();
   console.log(currentPage);
   return (
     <Router>
@@ -28,6 +31,7 @@ const App = () => {
             <Route path="/menu" element={<MenuPage />}></Route>
           </Routes>
         </Box>
+        {isAddMealClicked ? <AddMealCart/> : ''}
       </div>
     </Router>
   );

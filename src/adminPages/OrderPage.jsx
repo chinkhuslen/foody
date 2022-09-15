@@ -1,12 +1,8 @@
-import { Box } from "@mui/system"
 import { useNavContext } from '../provider/navContext'
+import ResponsiveDrawer from '../components/navigation';
 const OrderPage = () => {
-    const { setCurrentPage, currentPage } = useNavContext();
+    const { setCurrentPage } = useNavContext();
     setCurrentPage('Захиалга');
-    return (
-        <Box>
-            Order
-        </Box>
-    )
+    return (<ResponsiveDrawer/>)
 }
 export default OrderPage

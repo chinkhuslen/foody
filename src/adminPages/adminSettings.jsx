@@ -1,7 +1,8 @@
+import ResponsiveDrawer from '../components/navigation';
 import { useNavContext } from '../provider/navContext'
 const SettingsPage = () => {
     const { setCurrentPage, currentPage } = useNavContext();
     setCurrentPage('Тохиргоо');
-    return (<div>SettingsPage</div>)
+    return (<ResponsiveDrawer/>)
 }
 export default SettingsPage

@@ -18,9 +18,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
 import Logo from "../Logo";
-import { useState } from "react";
 import { useNavContext } from '../provider/navContext'
 const drawerWidth = 240;
 
@@ -56,7 +55,7 @@ function ResponsiveDrawer(props) {
           },
           { text: "Тохиргоо", path: "/settings", icon: <SettingsIcon /> },
           { text: "Меню", path: "/menu", icon: <RestaurantIcon /> },
-          { text: "Гарах", path: "/", icon: <LogoutIcon /> },
+          { text: "Гарах", path: "/login", icon: <LogoutIcon /> },
         ].map((el) => (
           <Link to={el.path}>
             <ListItem key={el.text} disablePadding sx={{ color: "#ffffff", background: currentPage == el.text ? 'linear-gradient(90deg, rgba(102,182,15,0.5303308823529411) 7%, rgba(102,182,15,0) 100%)' : 'none' }}>
@@ -76,8 +75,6 @@ function ResponsiveDrawer(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-
-
       <AppBar
         position="fixed"
         sx={{

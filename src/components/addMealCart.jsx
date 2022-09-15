@@ -1,32 +1,46 @@
-import { Card, CardActions, CardContent, Typography, Button, Box, Badge, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, MenuItem, Select } from '@mui/material'
-import CardHeader from '@mui/material/CardHeader';
-import { red } from '@mui/material/colors';
+import { Card, CardContent, Typography, Button, Box, Badge, TextField, InputAdornment } from '@mui/material'
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import { useState } from 'react';
-import {useButtonContext} from '../provider/buttonContext'
+import { useButtonContext } from '../provider/buttonContext'
+import { useEffect, useState } from 'react';
+import {addFoodDataToFire} from '../firebase/foodMenu';
 export const AddMealCart = () => {
-    const [age, setAge] = useState('');
-    const { setIsAddMealClicked,isAddMealClicked } = useButtonContext();
-    const handleChange = (event) => {
-      setAge(event.target.value);
-    };
+    const { setIsAddMealClicked, isAddMealClicked } = useButtonContext();
+    const [submitButton,setSubmitButton] = useState(false);
+    const [foodData, setFoodData] = useState({
+        name: false,
+        price: false,
+        desc: false,
+        category: false,
+        portion:false
+    });
+    useEffect(()=>{
+        if(foodData.name && foodData.price && foodData.desc && foodData.category)
+            setSubmitButton(true)
+        else
+            setSubmitButton(false)
+    },[foodData]);
 
+    const sendData = () =>{
+        if(submitButton){
+            addFoodDataToFire(foodData);
+        }
+    }  
     return (
         <div id="addMeal">
 
-            <Card sx={{ width: { xs: 350, sm: 550, md: 750 }, height: "80vh",overflow:'scroll' }}>
+            <Card sx={{ width: { xs: 350, sm: 550, md: 750 }, height: "80vh", overflow: 'scroll' }}>
                 <CardContent style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} >
-                    <IconButton onClick={()=>setIsAddMealClicked(!isAddMealClicked)}>
+                    <IconButton onClick={() => setIsAddMealClicked(!isAddMealClicked)}>
                         <CloseIcon sx={{ color: '#000000' }} />
                     </IconButton>
                     <Typography sx={{ fontWeight: 700, fontSize: { sm: 24, xs: 18 }, lineHeight: '32px' }}>
                         Хоол нэмэх
                     </Typography>
-                    <Button variant="outlined" style={{ textTransform: 'none', backgroundColor: '#A0A2A8', color: '#fff', border: 'none' }} >Хадгалах</Button>
+                    <Button onClick={sendData} color='success' variant="contained"  disabled={!submitButton} style={{ textTransform: 'none'}}>Хадгалах</Button>
                 </CardContent>
                 {/* ----------------- */}
                 <CardContent sx={{ display: { sm: 'flex' }, justifyContent: 'space-evenly' }}>
@@ -48,6 +62,7 @@ export const AddMealCart = () => {
                             id="outlined-textarea"
                             label="Хоолны нэр"
                             placeholder="Энд бичнэ үү"
+                            onChange={(event) => setFoodData({ ...foodData, name: event.target.value })}
 
                         />
                         <TextField
@@ -57,6 +72,7 @@ export const AddMealCart = () => {
                             multiline
                             rows={4}
                             placeholder="Энд бичнэ үү"
+                            onChange={(event) => setFoodData({ ...foodData, desc: event.target.value })}
                         />
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                             <TextField
@@ -69,28 +85,22 @@ export const AddMealCart = () => {
                                     ),
                                 }}
                                 placeholder="Энд бичнэ үү"
+                                onChange={(event) => setFoodData({ ...foodData, price: event.target.value })}
                             />
                             <TextField
                                 id="outlined-textarea"
                                 label="Хоолны төрөл"
                                 sx={{ width: '48%' }}
                                 placeholder="Энд бичнэ үү"
+                                onChange={(event) => setFoodData({ ...foodData, category: event.target.value })}
                             />
                         </Box>
-                        {/* <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={age}
-                                label="Age"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
-                        </FormControl> */}
+                        <TextField
+                                id="outlined-textarea"
+                                label="Хоолны порц"
+                                placeholder="Энд бичнэ үү"
+                                onChange={(event) => setFoodData({ ...foodData, portion: event.target.value })}
+                            />
                     </Box>
                 </CardContent>
                 {/* -------------- */}

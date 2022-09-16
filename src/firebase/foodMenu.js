@@ -1,6 +1,5 @@
 import {db} from './firebase'
 import {  collection, addDoc, getDocs } from "firebase/firestore";
-import { useMemo } from 'react';
 
 export const addFoodDataToFire = async (data) =>{
     try {
@@ -8,10 +7,12 @@ export const addFoodDataToFire = async (data) =>{
             ...data
         });
         console.log("doc id: " + docRef.id)
+        console.log(data);
     } catch (error) {
         console.log(error)
     }
 }
+
 export const getFoodData = async () =>{
         try {
             const querySnapshot = await getDocs(collection(db,'meals'));

@@ -47,7 +47,7 @@ const MenuPage = () => {
         <Box sx={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
           {menuData.map(el =>
             <Box sx={{ m: 2, width: '192px', position: 'relative' }}>
-              <img src={el.image} style={{ width: '132px', zIndex: 1000000000, marginBottom: "-62px" }} />
+              <img src={el.image} style={{ width: '132px', zIndex: 1000000000, marginBottom: "-62px",marginLeft:'30px' }} />
               <Box sx={{ border: "1px solid rgba(0, 7, 35, 0.08)", height: '230px', width: '152px', borderRadius: '8px', display: 'flex', flexDirection: 'column', padding: '20px', justifyContent: 'center', position: 'relative' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <Typography sx={{ fontWeight: 600 }}>{el.name}</Typography>

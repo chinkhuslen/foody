@@ -118,23 +118,23 @@ export const foodDatas = [
       {ingredient:"Давс", amount:'Амталгаагаар'},
     ]
   },
-  {
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/foody-483a1.appspot.com/o/lazany.png?alt=media&token=018cbecf-13e4-4143-b20d-0dfa213a9404",
-    name: "Лазанья",
-    portion: "Порц 4",
-    price: 33500,
-    description: "Kimchi stew is one of the most-loved of all the stews in Korean cuisine. It’s a warm, hearty, spicy, savory, delicious dish that pretty much everyone loves. As long as they can handle spicy food, I never met a person who didn’t like kimchi-jjigae.",
-    recipe: [
-      {ingredient:"Болсон кимчи", amount:'300г'},
-      {ingredient:"Гахайн мах ", amount:"200г"},
-      {ingredient:"Бяцалсан сармис ", amount:'1-2 хумс'},
-      {ingredient:"Бөөрөнхий сонгино", amount:'1/4ш'},
-      {ingredient:"Ногоон сонгино", amount:'1ш'},
-      {ingredient:"Халуун чинжүү", amount:'1ш'},
-      {ingredient:"Давс", amount:'Амталгаагаар'},
-    ]
-  },
+  // {
+  //   image:
+  //     "https://firebasestorage.googleapis.com/v0/b/foody-483a1.appspot.com/o/lazany.png?alt=media&token=018cbecf-13e4-4143-b20d-0dfa213a9404",
+  //   name: "Лазанья",
+  //   portion: "Порц 4",
+  //   price: 33500,
+  //   description: "Kimchi stew is one of the most-loved of all the stews in Korean cuisine. It’s a warm, hearty, spicy, savory, delicious dish that pretty much everyone loves. As long as they can handle spicy food, I never met a person who didn’t like kimchi-jjigae.",
+  //   recipe: [
+  //     {ingredient:"Болсон кимчи", amount:'300г'},
+  //     {ingredient:"Гахайн мах ", amount:"200г"},
+  //     {ingredient:"Бяцалсан сармис ", amount:'1-2 хумс'},
+  //     {ingredient:"Бөөрөнхий сонгино", amount:'1/4ш'},
+  //     {ingredient:"Ногоон сонгино", amount:'1ш'},
+  //     {ingredient:"Халуун чинжүү", amount:'1ш'},
+  //     {ingredient:"Давс", amount:'Амталгаагаар'},
+  //   ]
+  // },
   {
     image:
       "https://firebasestorage.googleapis.com/v0/b/foody-483a1.appspot.com/o/misoRamen.png?alt=media&token=d2ba4e3b-a375-4118-b699-818e955333b4",

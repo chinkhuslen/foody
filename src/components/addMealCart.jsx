@@ -6,29 +6,29 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { useButtonContext } from '../provider/buttonContext'
 import { useEffect, useState } from 'react';
-import {addFoodDataToFire} from '../firebase/foodMenu';
+import { addFoodDataToFire } from '../firebase/foodMenu';
 export const AddMealCart = () => {
     const { setIsAddMealClicked, isAddMealClicked } = useButtonContext();
-    const [submitButton,setSubmitButton] = useState(false);
+    const [submitButton, setSubmitButton] = useState(false);
     const [foodData, setFoodData] = useState({
         name: false,
         price: false,
         desc: false,
         category: false,
-        portion:false
+        portion: false
     });
-    useEffect(()=>{
-        if(foodData.name && foodData.price && foodData.desc && foodData.category)
+    useEffect(() => {
+        if (foodData.name && foodData.price && foodData.desc && foodData.category)
             setSubmitButton(true)
         else
             setSubmitButton(false)
-    },[foodData]);
+    }, [foodData]);
 
-    const sendData = () =>{
-        if(submitButton){
+    const sendData = () => {
+        if (submitButton) {
             addFoodDataToFire(foodData);
         }
-    }  
+    }
     return (
         <div id="addMeal">
 
@@ -40,7 +40,7 @@ export const AddMealCart = () => {
                     <Typography sx={{ fontWeight: 700, fontSize: { sm: 24, xs: 18 }, lineHeight: '32px' }}>
                         Хоол нэмэх
                     </Typography>
-                    <Button onClick={sendData} color='success' variant="contained"  disabled={!submitButton} style={{ textTransform: 'none'}}>Хадгалах</Button>
+                    <Button onClick={sendData} color='success' variant="contained" disabled={!submitButton} style={{ textTransform: 'none' }}>Хадгалах</Button>
                 </CardContent>
                 {/* ----------------- */}
                 <CardContent sx={{ display: { sm: 'flex' }, justifyContent: 'space-evenly' }}>
@@ -49,7 +49,33 @@ export const AddMealCart = () => {
                             overlap="circular"
                             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                             badgeContent={
-                                <Avatar sx={{ border: '2px solid #fff' }}><PhotoCameraIcon /></Avatar>
+                                // <IconButton sx={{ border: '2px solid #fff',backgroundColor:'#C4C4C4',"&:hover": { backgroundColor: "#C4C4C4" }}}>
+                                //     <input type="file" hidden/>
+                                //     <PhotoCameraIcon />
+                                // </IconButton>
+                            //     <span>
+                            //     <input
+                            //       color="primary"
+                            //       accept="image/*"
+                            //       type="file"
+                         
+                            //       id="icon-button-file"
+                            //       style={{ display: 'none', }}
+                            //     />
+                            //     <label htmlFor="icon-button-file">
+                            //       <IconButton
+                            //         component="span"
+                            //         sx={{ border: '2px solid #fff',backgroundColor:'#C4C4C4',"&:hover": { backgroundColor: "#C4C4C4" }}}
+                            //       >
+                            //         <PhotoCameraIcon />
+                            //       </IconButton>
+                            //     </label>
+                            //   </span>
+                              <IconButton sx={{ border: '2px solid #fff',backgroundColor:'#C4C4C4',"&:hover": { backgroundColor: "#C4C4C4" }}} aria-label="upload picture" component="label">
+                              <input hidden accept="image/*" type="file" onChange={(event)=>{console.log(event.target.files[0])}}/>
+                              <PhotoCameraIcon />
+                            </IconButton>
+                                // <Avatar sx={{ border: '2px solid #fff' }}><PhotoCameraIcon /></Avatar>
                             }
                         >
                             <Avatar sx={{ bgcolor: "#C4C4C4", width: { md: 200, sm: 150, xs: 150 }, height: { md: 200, sm: 150, xs: 150 } }} ><RestaurantIcon sx={{ fontSize: 70 }} /></Avatar>
@@ -96,11 +122,11 @@ export const AddMealCart = () => {
                             />
                         </Box>
                         <TextField
-                                id="outlined-textarea"
-                                label="Хоолны порц"
-                                placeholder="Энд бичнэ үү"
-                                onChange={(event) => setFoodData({ ...foodData, portion: event.target.value })}
-                            />
+                            id="outlined-textarea"
+                            label="Хоолны порц"
+                            placeholder="Энд бичнэ үү"
+                            onChange={(event) => setFoodData({ ...foodData, portion: event.target.value })}
+                        />
                     </Box>
                 </CardContent>
                 {/* -------------- */}

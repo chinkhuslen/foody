@@ -12,6 +12,7 @@ const MenuPage = () => {
   const { setCurrentPage } = useNavContext();
   setCurrentPage('Меню');
   const [menuData, setMenuData] = useState([...foodDatas]);
+  // const [menuData, setMenuData] = useState([]);
 
   // const reqMenuData = async () => {
   //   try {

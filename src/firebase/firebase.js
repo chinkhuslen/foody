@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs,where,query, updateDoc,doc } from "firebase/firestore";
-import { getAuth, RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBvafM5UsbQYxe_iVY4cQPrLmpTsFNc7x4",
@@ -24,3 +25,4 @@ export const actionCodeSettings = {
 
 export const auth = getAuth();
 export const db = getFirestore(app);
+export const storage = getStorage(app);

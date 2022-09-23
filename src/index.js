@@ -5,14 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { NavProvider } from "./provider/navContext";
 import { ButtonProvider } from "./provider/buttonContext";
+import { OrderDataProvider } from "./provider/orderDataContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <OrderDataProvider>
     <NavProvider>
       <ButtonProvider>
       <App />
       </ButtonProvider>
     </NavProvider>
+    </OrderDataProvider>
   </React.StrictMode>
 );
 

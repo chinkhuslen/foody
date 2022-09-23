@@ -379,7 +379,7 @@ export const orderData = [
       phone: "99022052",
       id: 1,
       week: "Даваа",
-      state:''
+      state: "packed",
     },
     {
       orderID: "#00ABF0",
@@ -398,7 +398,7 @@ export const orderData = [
       phone: "88894152",
       id: 2,
       week: "Даваа",
-      state:''
+      state: "",
     },
     {
       orderID: "#00FGF0",
@@ -417,7 +417,7 @@ export const orderData = [
       phone: "88008159",
       id: 3,
       week: "Даваа",
-      state:''
+      state: "delivered",
     },
   ],
   [
@@ -438,7 +438,7 @@ export const orderData = [
       phone: "99022052",
       id: 4,
       week: "Мягмар",
-      state:''
+      state: "",
     },
     {
       orderID: "#00DVN0",
@@ -457,7 +457,7 @@ export const orderData = [
       phone: "99022052",
       id: 5,
       week: "Мягмар",
-      state:''
+      state: "",
     },
   ],
   [
@@ -478,7 +478,7 @@ export const orderData = [
       phone: "99022052",
       id: 6,
       week: "Лхагва",
-      state:''
+      state: "returned",
     },
   ],
   [
@@ -499,7 +499,7 @@ export const orderData = [
       phone: "99022052",
       id: 7,
       week: "Пүрэв",
-      state:''
+      state: "",
     },
   ],
   [
@@ -520,7 +520,7 @@ export const orderData = [
       phone: "99022052",
       id: 8,
       week: "Баасан",
-      state:''
+      state: "",
     },
   ],
   [
@@ -541,7 +541,7 @@ export const orderData = [
       phone: "99022052",
       id: 9,
       week: "Бямба",
-      state:''
+      state: "",
     },
   ],
   [
@@ -562,7 +562,7 @@ export const orderData = [
       phone: "99022052",
       id: 10,
       week: "Ням",
-      state:''
+      state: "",
     },
   ],
 ];

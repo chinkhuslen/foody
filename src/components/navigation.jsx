@@ -58,7 +58,7 @@ function ResponsiveDrawer(props) {
           { text: "Гарах", path: "/login", icon: <LogoutIcon /> },
         ].map((el) => (
           <Link to={el.path}>
-            <ListItem key={el.text} disablePadding sx={{ color: "#ffffff", background: currentPage == el.text ? 'linear-gradient(90deg, rgba(102,182,15,0.5303308823529411) 7%, rgba(102,182,15,0) 100%)' : 'none' }}>
+            <ListItem key={el.text} disablePadding sx={{ color: "#ffffff", background: currentPage === el.text ? 'linear-gradient(90deg, rgba(102,182,15,0.5303308823529411) 7%, rgba(102,182,15,0) 100%)' : 'none' }}>
               <ListItemButton>
                 <ListItemIcon sx={{ color: "#ffffff" }}>{el.icon}</ListItemIcon>
                 <ListItemText primary={el.text} />

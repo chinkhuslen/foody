@@ -1,7 +1,7 @@
 import { useNavContext } from '../provider/navContext'
 import ResponsiveDrawer from '../components/navigation';
 const DashboardPage = () => {
-    const { setCurrentPage, currentPage } = useNavContext();
+    const { setCurrentPage } = useNavContext();
     setCurrentPage('График');
     return (<ResponsiveDrawer/>)
 }

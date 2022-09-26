@@ -27,7 +27,7 @@ const AdminLogIn = () => {
                 }}
             >
                 <Box sx={{ width: { xs: '150px', sm: '250px' } }}>
-                    <img src={blackLogo} style={{ width: '100%', marginBottom: '70px' }} />
+                    <img src={blackLogo} style={{ width: '100%', marginBottom: '70px' }} alt={'logo'} />
                 </Box>
                 <Avatar sx={{ m: 1, bgcolor: '#000723' }}>
                     <LockOutlinedIcon />

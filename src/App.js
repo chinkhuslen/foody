@@ -8,8 +8,6 @@ import { AddMealCart} from "./components/addMealCart";
 import "./style.css";
 import { useButtonContext } from "./provider/buttonContext";
 import AdminLogIn from "./adminPages/adminLogIn";
-import { getFoodData } from "./firebase/foodMenu";
-import { useMemo } from "react";
 const App = () => {
   const { isAddMealClicked } = useButtonContext();
   return (
